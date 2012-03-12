@@ -10,6 +10,13 @@ let loaded_hakyll = 1
 let s:old_cpo = &cpo
 set cpo&vim
 
+" default options {{{
+let s:hakyll_defaults = {}
+let s:hakyll_defaults.path = '~/hakyll'
+let s:hakyll_defaults.ext = '.md'
+let s:hakyll_defaults.use_calendar = 1
+" }}}
+
 function! HakyllGet(option) "{{{
   if !has_key(g:hakyll_options, a:option) &&
         \ has_key(s:hakyll_defaults, a:option)
@@ -31,16 +38,10 @@ function! HakyllGet(option) "{{{
 endfunction "}}}
 
 " CALENDAR Hook "{{{
-if g:hakyll_use_calendar
+if HakyllGet('use_calendar')
   let g:calendar_action = 'hakyll#diary#calendar_action'
   let g:calendar_sign = 'hakyll#diary#calendar_sign'
 endif
 "}}}
-
-" default options {{{
-let s:hakyll_defaults = {}
-let s:hakyll_defaults.path = '~/hakyll'
-let s:hakyll_defaults.ext = '.md'
-" }}}
 
 let &cpo = s:old_cpo

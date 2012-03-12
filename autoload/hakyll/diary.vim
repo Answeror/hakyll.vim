@@ -23,8 +23,8 @@ import vim, os
 link = vim.eval('a:link')
 base = vim.eval("HakyllGet('path')")
 ext = vim.eval("HakyllGet('ext')")
-path = os.path.join(base, "posts/diary"), link, ext)
-vim.command('e {}'.format(path))
+path = os.path.join(base, 'posts/diary', link + ext)
+vim.command('e ' + path)
 EOF
 endfunction "}}}
 
